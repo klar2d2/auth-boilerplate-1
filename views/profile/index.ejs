@@ -1,1 +1,16 @@
-<h1>Profile Page</h1>
+<h1><%= currentUser.firstname %>'s Profile Page</h1>
+
+<div class="container">
+  <div class="left">
+    <img src="<%= currentUser.profile %>" alt"user profile pic">
+    <p><strong>Name: </strong> <%= currentUser.firstname %> <%= currentUser.lastname %></p>
+    <p><strong>Admin: </strong><%= currentUser.aadmin ? 'Yes' : 'No'%></p>
+  </div>
+  <div class="right">
+    <p>
+      <%= currentUser.firstname %> was born on <%= moment(currentUser.birthday).format('MMM Do YYYY') %> and uses the dsplay name <%= currentUser.username %>
+    </p>
+    <hr>
+    <%= currentUser.bio %>
+  </div>
+</div>

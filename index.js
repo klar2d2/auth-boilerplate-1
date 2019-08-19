@@ -5,6 +5,7 @@ const flash = require('connect-flash');
 const layouts = require('express-ejs-layouts');
 const passport = require('./config/passportConfig');
 const session = require('express-session');
+const moment = require('moment')
 
 // Instantiate the express app
 const app = express();
@@ -26,8 +27,11 @@ app.use(passport.session());
 // Custom middleware: write data to locals for EVERY page
 app.use((req, res, next) => {
   res.locals.alerts = req.flash();
+  res.locals.currentUser = req.user
+  res.locals.moment = moment
   next();
 });
+
 
 // Controllers
 app.use('/auth', require('./controllers/auth'));
